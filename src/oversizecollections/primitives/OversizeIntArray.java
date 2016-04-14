@@ -1,3 +1,5 @@
+package oversizecollections.primitives;
+
 /**
  * This class will generate an easily usable array that is larger than the maximum allowable
  * array in the JVM. (Roughly Integer.MAX_VALUE - 8, slightly higher in some versions.)
@@ -31,7 +33,7 @@ public final class OversizeIntArray {
     private static final int MAX_ARR_SIZE = Integer.MAX_VALUE - 8;
 
     /**
-     * Constructs a OversizeIntArray.
+     * Constructs a oversizecollections.OversizeIntArrayves.OversizeIntArray.
      * @param size the number of array elements
      */
     public OversizeIntArray(final long size) {

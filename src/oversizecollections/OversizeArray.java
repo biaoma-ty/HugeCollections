@@ -1,16 +1,18 @@
+package oversizecollections;
+
 /**
  * Array of long size
  */
 public final class OversizeArray<E> implements OversizeList<E> {
 
     /**
-     * The size of the OversizeArray in terms of array elements.
+     * The size of the oversizecollections.OversizeArray in terms of array elements.
      * Specified when calling constructor.
      */
     private long size;
 
     /**
-     * The 'segments' of the OversizeArray. Since there is a cap on the size of a single
+     * The 'segments' of the oversizecollections.OversizeArray. Since there is a cap on the size of a single
      * array, this class makes a number of separate arrays then does the math to make them
      * appear to be one externally.
      */
@@ -22,7 +24,7 @@ public final class OversizeArray<E> implements OversizeList<E> {
     private static final int MAX_ARR_SIZE = Integer.MAX_VALUE - 8;
 
     /**
-     * Constructs a OversizeArray.
+     * Constructs a oversizecollections.OversizeArray.
      * @param size the number of array elements
      */
     public OversizeArray(final long size) {
@@ -61,7 +63,7 @@ public final class OversizeArray<E> implements OversizeList<E> {
     }
 
     /**
-     * The number of elements that can be stored in this OversizeIntArray.
+     * The number of elements that can be stored in this oversizecollections.OversizeIntArrayves.OversizeIntArray.
      */
     @Override
     public long size() {
