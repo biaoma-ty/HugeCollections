@@ -1,4 +1,7 @@
-public final class OversizeArray<E> {
+/**
+ * Array of long size
+ */
+public final class OversizeArray<E> implements OversizeCollection<E> {
 
     /**
      * The size of the OversizeArray in terms of array elements.
@@ -60,7 +63,8 @@ public final class OversizeArray<E> {
     /**
      * The number of elements that can be stored in this OversizeIntArray.
      */
-    public long getSize() {
-        return size;
+    @Override
+    public long size() {
+        return size();
     }
 }

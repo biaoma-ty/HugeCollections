@@ -1,5 +1,12 @@
 /**
- * Created by matthew on 4/13/2016.
+ * An oversize collection is made to be interpreted in the same way as the default
+ * Collection interface.
  */
-public class OversizeCollection {
+public interface OversizeCollection<E> {
+
+    public E get(long index);
+
+    public void set(long index, E object);
+
+    public long size();
 }
