@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BigMem.iml" filepath="$PROJECT_DIR$/BigMem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OversizeCollections.iml" filepath="$PROJECT_DIR$/OversizeCollections.iml" />
     </modules>
   </component>
 </project>
