@@ -33,7 +33,7 @@ public final class OversizeIntArray {
     private static final int MAX_ARR_SIZE = Integer.MAX_VALUE - 8;
 
     /**
-     * Constructs a oversizecollections.OversizeIntArrayves.OversizeIntArray.
+     * Constructs a OversizeIntArray.
      * @param size the number of array elements
      */
     public OversizeIntArray(final long size) {

@@ -11,13 +11,13 @@ package oversizecollections.primitives;
 public final class OversizeByteArray {
 
     /**
-     * The size of the OversizeIntArray in terms of array elements.
+     * The size of the OversizeByteArray in terms of array elements.
      * Specified when calling constructor.
      */
     private long size;
 
     /**
-     * The 'segments' of the OversizeIntArray. Since there is a cap on the size of a single
+     * The 'segments' of the OversizeByteArray. Since there is a cap on the size of a single
      * array, this class makes a number of separate arrays then does the math to make them
      * appear to be one externally.
      */
@@ -29,7 +29,7 @@ public final class OversizeByteArray {
     private static final int MAX_ARR_SIZE = Integer.MAX_VALUE - 8;
 
     /**
-     * Constructs a oversizecollections.OversizeIntArrayves.OversizeIntArray.
+     * Constructs a OversizeByteArray.
      * @param size the number of array elements
      */
     public OversizeByteArray(final long size) {
@@ -68,7 +68,7 @@ public final class OversizeByteArray {
     }
 
     /**
-     * The number of elements that can be stored in this OversizeIntArray.
+     * The number of elements that can be stored in this OversizeByteArray.
      */
     public long getSize() {
         return size;
