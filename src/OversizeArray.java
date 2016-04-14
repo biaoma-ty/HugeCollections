@@ -1,7 +1,7 @@
 /**
  * Array of long size
  */
-public final class OversizeArray<E> implements OversizeCollection<E> {
+public final class OversizeArray<E> implements OversizeList<E> {
 
     /**
      * The size of the OversizeArray in terms of array elements.

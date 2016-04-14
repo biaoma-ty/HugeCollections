@@ -2,7 +2,7 @@
  * An oversize collection is made to be interpreted in the same way as the default
  * Collection interface.
  */
-public interface OversizeCollection<E> {
+public interface OversizeList<E> {
 
     public E get(long index);
 
