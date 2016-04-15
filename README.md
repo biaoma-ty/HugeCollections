@@ -10,6 +10,9 @@ The java collections framework has this problem as well, on top of the fact that
 This library solves this problem by providing arbitrary length arrays. In future versions it will, if plans hold, contain replacements for many of the default collections data structures.
 
 
+Information
+-----------
+
 License: LGPL.
 
 
