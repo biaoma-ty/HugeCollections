@@ -13,9 +13,16 @@ public class PrimeSieve {
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-
         long primeCap = 5000000000l;
-        long primesFound = 1; // Set to one because the prime '2' will not be found by the algorithm. It is pre-marked as prime.
+        long primesFound = getPrimesBelow(primeCap);
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        System.out.println(numberFormat.format(primesFound) + " primes below " + numberFormat.format(primeCap));
+        System.out.println("Computation finished in: " + numberFormat.format(System.currentTimeMillis() - startTime) + "ms");
+    }
+
+    public static long getPrimesBelow(long primeCap) {
+        // Set to one because the prime '2' will not be found by the algorithm. It is pre-marked as prime.
+        long primesFound = 1;
 
         OversizeBooleanArray boolArray = new OversizeBooleanArray((long) (primeCap * 1.1));
 
@@ -34,8 +41,6 @@ public class PrimeSieve {
             }
         }
 
-        NumberFormat numberFormat = NumberFormat.getInstance();
-        System.out.println(numberFormat.format(primesFound) + " primes below " + numberFormat.format(primeCap));
-        System.out.println("Computation finished in: " + numberFormat.format(System.currentTimeMillis() - startTime) + "ms");
+        return primesFound;
     }
 }
