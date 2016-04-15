@@ -7,14 +7,14 @@ import java.text.NumberFormat;
 /**
  * Prime sieve
  *
- * Primes under 1 billion by default
+ * Primes under 5 billion by default
  */
 public class PrimeSieve {
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
-        long primeCap = 1000000000l;
+        long primeCap = 5000000000l;
         long primesFound = 1; // Set to one because the prime '2' will not be found by the algorithm. It is pre-marked as prime.
 
         OversizeBooleanArray boolArray = new OversizeBooleanArray((long) (primeCap * 1.1));
@@ -23,7 +23,7 @@ public class PrimeSieve {
             boolArray.set(i * 2, true);
         }
 
-        for (int i = 3; i < primeCap; i+=2) {
+        for (long i = 3; i < primeCap; i+=2) {
             if(!boolArray.get(i)) {
                 primesFound++;
 
