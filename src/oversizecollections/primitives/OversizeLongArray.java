@@ -1,5 +1,7 @@
 package oversizecollections.primitives;
 
+import java.util.List;
+
 /**
  * This class will generate an easily usable array that is larger than the maximum allowable
  * array in the JVM. (Roughly Integer.MAX_VALUE - 8, slightly higher in some versions.)
@@ -30,7 +32,7 @@ public final class OversizeLongArray {
     /**
      * Biggest array size guaranteed to work across all JVMs.
      */
-    private static final int MAX_ARR_SIZE = Integer.MAX_VALUE - 8;
+    protected static final long MAX_ARR_SIZE = Integer.MAX_VALUE - 8;
 
     /**
      * Constructs a OversizeLongArray.
@@ -43,10 +45,19 @@ public final class OversizeLongArray {
         segments = new long[segmentCount][];
 
         for (int i = 0; i < segmentCount - 1; i++) {
-            segments[i] = new long[MAX_ARR_SIZE];
+            segments[i] = new long[(int) MAX_ARR_SIZE];
         }
 
         segments[segmentCount - 1] = new long[(int) (size - (MAX_ARR_SIZE * (segmentCount - 1)))];
+    }
+
+    public OversizeLongArray(List<long[]> longArrays) {
+        segments = new long[longArrays.size()][];
+
+        int i = 0;
+        for(long[] l : longArrays) {
+            segments[i++] = l;
+        }
     }
 
     /**
@@ -55,9 +66,18 @@ public final class OversizeLongArray {
      * @return the element at the supplied index
      */
     public long get(long index) {
-        long segment = index / MAX_ARR_SIZE;
-        long offset = index % MAX_ARR_SIZE;
-        return segments[((int) segment)][((int) offset)];
+        long segment = 0;
+        long offset = 0;
+        try {
+            segment = index / MAX_ARR_SIZE;
+            offset = index % MAX_ARR_SIZE;
+            return segments[((int) segment)][((int) offset)];
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(index + " " + segment + " " + offset);
+            System.exit(0);
+        }
+        return 0;
     }
 
     /**
@@ -65,10 +85,17 @@ public final class OversizeLongArray {
      * @param index the index which will be the set to the value
      * @param value the value to be set at the index
      */
-    public void set(long index, long value) {
-        long segment = index / MAX_ARR_SIZE;
-        long offset = index % MAX_ARR_SIZE;
-        segments[((int) segment)][((int) offset)] = value;
+    public void set(long index, long value) {        long segment = 0;
+        long offset = 0;
+        try {
+            segment = index / MAX_ARR_SIZE;
+            offset = index % MAX_ARR_SIZE;
+            segments[((int) segment)][((int) offset)] = value;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(index + " " + segment + " " + offset);
+            System.exit(0);
+        }
     }
 
     /**
@@ -76,5 +103,9 @@ public final class OversizeLongArray {
      */
     public long getSize() {
         return size;
+    }
+
+    protected long[][] getSegments() {
+        return segments;
     }
 }

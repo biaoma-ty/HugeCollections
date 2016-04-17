@@ -62,9 +62,17 @@ public final class OversizeBooleanArray {
      * @param value the value to be set at the index
      */
     public void set(long index, boolean value) {
-        long segment = index / MAX_ARR_SIZE;
-        long offset = index % MAX_ARR_SIZE;
-        segments[((int) segment)][((int) offset)] = value;
+        long segment = 0;
+        long offset = 0;
+        try {
+            segment = index / MAX_ARR_SIZE;
+            offset = index % MAX_ARR_SIZE;
+            segments[((int) segment)][((int) offset)] = value;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(index + " " + segment + " " + offset);
+            System.exit(0);
+        }
     }
 
     /**
