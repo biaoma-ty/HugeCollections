@@ -1,6 +1,6 @@
-Oversize Collections [LibOC]
+Huge Collections
 ============================
-Oversize collections for JVMs. Store up to 9,223,372,036,854,775,807 objects in a collection, memory permitting.
+Huge collections for JVMs. Store up to 9,223,372,036,854,775,807 objects in a collection, memory permitting.
 
 
 Why?
