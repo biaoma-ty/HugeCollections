@@ -1,27 +1,27 @@
-package oversizecollections.primitives;
+package hugecollections.primitives;
 
 /**
  * This class will generate an easily usable array that is larger than the maximum allowable
  * array in the JVM. (Roughly Integer.MAX_VALUE - 8, slightly higher in some versions.)
  *
- * Indexes are longs (64-bit), elements are booleans (8-bit).
+ * Indexes are longs (64-bit), elements are chars (16-bit).
  *
  * @author Ellen Hebert
  */
-public final class OversizeBooleanArray {
+public final class OversizeCharArray {
 
     /**
-     * The size of the OversizeBooleanArray in terms of array elements.
+     * The size of the OversizeCharArray in terms of array elements.
      * Specified when calling constructor.
      */
     private long size;
 
     /**
-     * The 'segments' of the OversizeBooleanArray. Since there is a cap on the size of a single
+     * The 'segments' of the OversizeCharArray. Since there is a cap on the size of a single
      * array, this class makes a number of separate arrays then does the math to make them
      * appear to be one externally.
      */
-    private boolean[][] segments;
+    private char[][] segments;
 
     /**
      * Biggest array size guaranteed to work across all JVMs.
@@ -29,20 +29,20 @@ public final class OversizeBooleanArray {
     private static final int MAX_ARR_SIZE = Integer.MAX_VALUE - 8;
 
     /**
-     * Constructs a OversizeBooleanArray.
+     * Constructs a OversizeCharArray.
      * @param size the number of array elements
      */
-    public OversizeBooleanArray(final long size) {
+    public OversizeCharArray(final long size) {
         this.size = size;
 
         int segmentCount = (int) (size / MAX_ARR_SIZE) + 1;
-        segments = new boolean[segmentCount][];
+        segments = new char[segmentCount][];
 
         for (int i = 0; i < segmentCount - 1; i++) {
-            segments[i] = new boolean[MAX_ARR_SIZE];
+            segments[i] = new char[MAX_ARR_SIZE];
         }
 
-        segments[segmentCount - 1] = new boolean[(int) (size - (MAX_ARR_SIZE * (segmentCount - 1)))];
+        segments[segmentCount - 1] = new char[(int) (size - (MAX_ARR_SIZE * (segmentCount - 1)))];
     }
 
     /**
@@ -50,7 +50,7 @@ public final class OversizeBooleanArray {
      * @param index the index of the element to be returned
      * @return the element at the supplied index
      */
-    public boolean get(long index) {
+    public char get(long index) {
         long segment = index / MAX_ARR_SIZE;
         long offset = index % MAX_ARR_SIZE;
         return segments[((int) segment)][((int) offset)];
@@ -61,22 +61,14 @@ public final class OversizeBooleanArray {
      * @param index the index which will be the set to the value
      * @param value the value to be set at the index
      */
-    public void set(long index, boolean value) {
-        long segment = 0;
-        long offset = 0;
-        try {
-            segment = index / MAX_ARR_SIZE;
-            offset = index % MAX_ARR_SIZE;
-            segments[((int) segment)][((int) offset)] = value;
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(index + " " + segment + " " + offset);
-            System.exit(0);
-        }
+    public void set(long index, char value) {
+        long segment = index / MAX_ARR_SIZE;
+        long offset = index % MAX_ARR_SIZE;
+        segments[((int) segment)][((int) offset)] = value;
     }
 
     /**
-     * The number of elements that can be stored in this OversizeBooleanArray.
+     * The number of elements that can be stored in this OversizeCharArray.
      */
     public long getSize() {
         return size;

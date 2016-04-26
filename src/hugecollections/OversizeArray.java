@@ -1,27 +1,22 @@
-package oversizecollections.primitives;
+package hugecollections;
 
 /**
- * This class will generate an easily usable array that is larger than the maximum allowable
- * array in the JVM. (Roughly Integer.MAX_VALUE - 8, slightly higher in some versions.)
- *
- * Indexes are longs (64-bit), elements are bytes (32-bit).
- *
- * @author Ellen Hebert
+ * Array of long size
  */
-public final class OversizeByteArray {
+public final class OversizeArray<E> implements OversizeList<E> {
 
     /**
-     * The size of the OversizeByteArray in terms of array elements.
+     * The size of the hugecollections.OversizeArray in terms of array elements.
      * Specified when calling constructor.
      */
     private long size;
 
     /**
-     * The 'segments' of the OversizeByteArray. Since there is a cap on the size of a single
+     * The 'segments' of the hugecollections.OversizeArray. Since there is a cap on the size of a single
      * array, this class makes a number of separate arrays then does the math to make them
      * appear to be one externally.
      */
-    private byte[][] segments;
+    private E[][] segments;
 
     /**
      * Biggest array size guaranteed to work across all JVMs.
@@ -29,20 +24,20 @@ public final class OversizeByteArray {
     private static final int MAX_ARR_SIZE = Integer.MAX_VALUE - 8;
 
     /**
-     * Constructs a OversizeByteArray.
+     * Constructs a hugecollections.OversizeArray.
      * @param size the number of array elements
      */
-    public OversizeByteArray(final long size) {
+    public OversizeArray(final long size) {
         this.size = size;
 
         int segmentCount = (int) (size / MAX_ARR_SIZE) + 1;
-        segments = new byte[segmentCount][];
+        segments = (E[][]) new Object[segmentCount][];
 
         for (int i = 0; i < segmentCount - 1; i++) {
-            segments[i] = new byte[MAX_ARR_SIZE];
+            segments[i] = (E[]) new Object[MAX_ARR_SIZE];
         }
 
-        segments[segmentCount - 1] = new byte[(int) (size - (MAX_ARR_SIZE * (segmentCount - 1)))];
+        segments[segmentCount - 1] = (E[]) new Object[(int) (size - (MAX_ARR_SIZE * (segmentCount - 1)))];
     }
 
     /**
@@ -50,7 +45,7 @@ public final class OversizeByteArray {
      * @param index the index of the element to be returned
      * @return the element at the supplied index
      */
-    public byte get(long index) {
+    public E get(long index) {
         long segment = index / MAX_ARR_SIZE;
         long offset = index % MAX_ARR_SIZE;
         return segments[((int) segment)][((int) offset)];
@@ -61,16 +56,17 @@ public final class OversizeByteArray {
      * @param index the index which will be the set to the value
      * @param value the value to be set at the index
      */
-    public void set(long index, byte value) {
+    public void set(long index, E value) {
         long segment = index / MAX_ARR_SIZE;
         long offset = index % MAX_ARR_SIZE;
         segments[((int) segment)][((int) offset)] = value;
     }
 
     /**
-     * The number of elements that can be stored in this OversizeByteArray.
+     * The number of elements that can be stored in this hugecollections.OversizeIntArrayves.OversizeIntArray.
      */
-    public long getSize() {
+    @Override
+    public long size() {
         return size;
     }
 }

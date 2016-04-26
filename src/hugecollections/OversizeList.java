@@ -1,4 +1,4 @@
-package oversizecollections;
+package hugecollections;
 
 /**
  * An oversize collection is made to be interpreted in the same way as the default

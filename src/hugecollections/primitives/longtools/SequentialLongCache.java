@@ -1,4 +1,4 @@
-package oversizecollections.primitives.longtools;
+package hugecollections.primitives.longtools;
 
 import java.io.File;
 import java.io.IOException;

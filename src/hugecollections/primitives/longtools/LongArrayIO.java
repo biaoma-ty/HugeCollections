@@ -1,4 +1,4 @@
-package oversizecollections.primitives.longtools;
+package hugecollections.primitives.longtools;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
-package oversizecollections.examples;
+package hugecollections.examples;
 
-import oversizecollections.primitives.OversizeBooleanArray;
+import hugecollections.primitives.OversizeBooleanArray;
 
 import java.text.NumberFormat;
 

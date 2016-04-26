@@ -1,4 +1,4 @@
-package oversizecollections.primitives.experimental;
+package hugecollections.primitives.experimental;
 
 /**
  * This class will generate an easily usable array that is larger than the maximum allowable
