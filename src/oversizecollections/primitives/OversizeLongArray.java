@@ -66,18 +66,9 @@ public final class OversizeLongArray {
      * @return the element at the supplied index
      */
     public long get(long index) {
-        long segment = 0;
-        long offset = 0;
-        try {
-            segment = index / MAX_ARR_SIZE;
-            offset = index % MAX_ARR_SIZE;
-            return segments[((int) segment)][((int) offset)];
-        }catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(index + " " + segment + " " + offset);
-            System.exit(0);
-        }
-        return 0;
+        long segment = index / MAX_ARR_SIZE;
+        long offset = index % MAX_ARR_SIZE;
+        return segments[((int) segment)][((int) offset)];
     }
 
     /**
@@ -85,17 +76,15 @@ public final class OversizeLongArray {
      * @param index the index which will be the set to the value
      * @param value the value to be set at the index
      */
-    public void set(long index, long value) {        long segment = 0;
-        long offset = 0;
-        try {
-            segment = index / MAX_ARR_SIZE;
-            offset = index % MAX_ARR_SIZE;
-            segments[((int) segment)][((int) offset)] = value;
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(index + " " + segment + " " + offset);
-            System.exit(0);
-        }
+    public void set(long index, long value) {
+        long segment = index / MAX_ARR_SIZE;
+        long offset = index % MAX_ARR_SIZE;
+
+        segments[((int) segment)][((int) offset)] = value;
+    }
+
+    public void setContents(OversizeLongArray oversizeLongArray) {
+        this.segments = oversizeLongArray.segments;
     }
 
     /**

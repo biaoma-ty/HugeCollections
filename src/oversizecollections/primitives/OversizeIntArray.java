@@ -66,15 +66,9 @@ public final class OversizeIntArray {
      * @param value the value to be set at the index
      */
     public void set(long index, int value) {
-        long segment = 0;
-        long offset = 0;
-        try {
-            segment = index / MAX_ARR_SIZE;
-            offset = index % MAX_ARR_SIZE;
-            segments[((int) segment)][((int) offset)] = value;
-        } catch (Exception e) {
-            System.out.println(index + " " + segment + " " + offset);
-        }
+        long segment = index / MAX_ARR_SIZE;
+        long offset = index % MAX_ARR_SIZE;
+        segments[((int) segment)][((int) offset)] = value;
     }
 
     /**
