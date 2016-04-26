@@ -13,6 +13,9 @@ This library solves this problem by providing arbitrary length arrays. In future
 Information
 -----------
 
+.jar download: https://github.com/ellenhebert/OversizeCollections/blob/master/LibOC.jar
+
+
 License: LGPL.
 
 
