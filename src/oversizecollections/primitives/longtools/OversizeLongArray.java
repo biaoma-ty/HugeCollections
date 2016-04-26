@@ -1,4 +1,4 @@
-package oversizecollections.primitives;
+package oversizecollections.primitives.longtools;
 
 import java.util.List;
 
