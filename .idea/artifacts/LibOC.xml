@@ -2,7 +2,7 @@
   <artifact type="jar" build-on-make="true" name="LibOC">
     <output-path>$PROJECT_DIR$/out/artifacts/LibOC</output-path>
     <root id="archive" name="LibOC.jar">
-      <element id="module-output" name="OversizeCollections" />
+      <element id="module-output" name="HugeCollections" />
     </root>
   </artifact>
 </component>
